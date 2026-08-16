@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lobby - i++ Studio</title>
+    <style>
+        :root { --bg: #121212; --card: #1e1e24; --text: #ffffff; --accent: #f1c40f; --green: #2ecc71; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; margin: 0; padding: 0; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        
+        /* Bagian Header / Hero */
+        .hero { text-align: center; padding: 80px 20px; border-bottom: 2px solid #333; }
+        .hero h1 { font-size: 3em; color: var(--accent); margin-bottom: 10px; }
+        .hero p { font-size: 1.2em; color: #aaa; margin-bottom: 40px; }
+        .btn-play { background: var(--green); color: #000; padding: 15px 40px; font-size: 1.5em; font-weight: bold; text-decoration: none; border-radius: 50px; transition: 0.3s; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4); }
+        .btn-play:hover { background: var(--accent); box-shadow: 0 4px 15px rgba(241, 196, 15, 0.4); transform: scale(1.05); }
+
+        /* Bagian Tutorial & Artikel */
+        .section-title { color: var(--accent); border-left: 5px solid var(--accent); padding-left: 15px; margin-top: 50px; }
+        .card { background: var(--card); padding: 25px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #333; }
+        
+        /* Tampilan Kode */
+        pre { background: #000; color: #00ff00; padding: 15px; border-radius: 8px; overflow-x: auto; font-family: monospace; border: 1px solid #333; }
+        code { font-family: monospace; color: var(--accent); background: #000; padding: 2px 5px; border-radius: 3px; }
+        
+        /* Tabel Perintah */
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; border: 1px solid #444; text-align: left; }
+        th { background: #333; color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <div class="hero">
+            <h1>💻 i++ Studio</h1>
+            <p>Bahasa Pemrograman Masa Depan. Bikin Game, Web, & AI langsung dari Browser!</p>
+            <br>
+            <!-- Tombol Menuju Editor -->
+            <a href="ipp.html" class="btn-play">🚀 Buka Editor i++</a>
+        </div>
+
+        <!-- ARTIKEL 1: CARA PENGGUNAAN -->
+        <h2 class="section-title">📖 Cara Menggunakan i++</h2>
+        <div class="card">
+            <p>Selamat datang di i++ Studio! Di sini kamu bisa membuat program dengan cepat dan menyimpannya ke dalam format <b>.ipp</b>.</p>
+            <ol>
+                <li>Klik tombol <b>Buka Editor i++</b> di atas.</li>
+                <li>Tulis kode programmu di area layar hitam (Editor).</li>
+                <li>Klik tombol <span style="background:#2ecc71; color:black; padding:2px 8px; border-radius:3px; font-weight:bold;">▶️ Jalankan Kode</span> untuk melihat hasilnya.</li>
+                <li>Gunakan tombol <b>💾 Simpan (.ipp)</b> untuk menyimpan kodemu ke HP/Laptop, dan <b>📂 Open (.ipp)</b> untuk melanjutkannya nanti.</li>
+            </ol>
+        </div>
+
+        <!-- ARTIKEL 2: DAFTAR PERINTAH (CHEATSHEET) -->
+        <h2 class="section-title">⚡ Daftar Perintah Resmi i++</h2>
+        <div class="card">
+            <p>i++ memiliki perintah bawaan berbahasa Indonesia yang sangat mudah dipahami. Berikut daftar perintah yang bisa kamu ketik di editor:</p>
+            <table>
+                <tr>
+                    <th>Perintah</th>
+                    <th>Fungsi</th>
+                </tr>
+                <tr>
+                    <td><code>Notif("Pesan")</code></td>
+                    <td>Memunculkan notifikasi pop-up cantik di pojok layar.</td>
+                </tr>
+                <tr>
+                    <td><code>Getar(500)</code></td>
+                    <td>Membuat HP bergetar selama setengah detik (500 milidetik).</td>
+                </tr>
+                <tr>
+                    <td><code>Bicara("Halo")</code></td>
+                    <td>Sistem akan berbicara membacakan teks tersebut.</td>
+                </tr>
+                <tr>
+                    <td><code>LayarPenuh("html:...")</code></td>
+                    <td>Membuka game atau desain web buatanmu dalam mode Layar Penuh.</td>
+                </tr>
+                <tr>
+                    <td><code>BikinBrowserMelayang(...)</code></td>
+                    <td>Membuka jendela kecil/pop-up yang bisa digeser-geser.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ARTIKEL 4: TENTANG i++ -->
+        <h2 class="section-title">🌐 Tentang i++ Engine</h2>
+        <div class="card">
+            <p><b>i++ dibuat menggunakan apa?</b><br>
+            i++ Engine dibangun murni menggunakan teknologi <i>Web Native</i> (HTML5, CSS3, dan JavaScript V8 Engine). Karena berjalan langsung di atas <i>environment browser</i>, aplikasi ini sangat ringan, tidak memakan RAM, dan tidak perlu proses kompilasi yang lama.</p>
+        </div>
+
+        <div style="text-align: center; padding: 40px; color: #666;">
+            &copy; 2024 i++ Studio. Dibuat untuk para Developer Masa Depan.
+        </div>
+    </div>
+
+</body>
+  </html>
+              
