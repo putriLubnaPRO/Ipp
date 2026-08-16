@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Link Utama -->
+  <!-- Link Utama (Halaman Depan) -->
   <url>
-    <loc>https://ippbhs.netlify.app/</loc>
+    <loc>https://putrilubnapro.github.io/Ipp/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
   </url>
-  <!-- Link Lobby -->
+  <!-- Link Editor i++ -->
   <url>
-    <loc>https://ippbhs.netlify.app/lobby.html</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <!-- Link Editor -->
-  <url>
-    <loc>https://ippbhs.netlify.app/ipp.html</loc>
+    <loc>https://putrilubnapro.github.io/Ipp/ipp.html</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>
-                                              
