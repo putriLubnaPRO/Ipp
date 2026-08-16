@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"> <!-- Mencegah teks aneh saat dibuka offline -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i++ Studio Editor</title>
+    <style>
+        body { margin:0; height:100vh; display:flex; flex-direction:column; background:#121212; color:white; font-family: sans-serif;}
+        #toolbar { padding:10px; background:#1e1e24; display:flex; gap:10px; flex-wrap:wrap; border-bottom:1px solid #333; }
+        #editor { flex:1; background:#000; color:#00ff00; padding:15px; font-family:monospace; font-size:16px; border:none; resize:none; outline:none; }
+        button { padding: 8px 15px; cursor:pointer; background:#333; color:white; border:none; border-radius:4px; font-weight: bold; }
+        button:hover { background:#f1c40f; color:#000; }
+        .branding { align-self:center; margin-left:auto; font-size:12px; color:#666; font-weight:bold; }
+    </style>
+</head>
+<body>
+    <!-- BAGIAN ATAS: TOMBOL MENU -->
+    <div id="toolbar">
+        <button onclick="jalankan()" style="background:#2ecc71; color:#000;">▶️ Jalankan Kode</button>
+        <button onclick="saveFile()">💾 Simpan (.ipp)</button>
+        <button onclick="document.getElementById('fileInput').click()">📂 Open (.ipp)</button>
+        <input type="file" id="fileInput" onchange="loadFile(event)" style="display:none;">
+        <span class="branding">i++ Engine v2.0 Pro</span>
+    </div>
+
+    <!-- BAGIAN TENGAH: TEMPAT NGETIK KODE -->
+    <textarea id="editor" spellcheck="false">// --- SELAMAT DATANG DI i++ STUDIO ---
+// Hapus kode ini dan mulai buat aplikasimu sendiri!
+
+Notif("Sistem i++ Berhasil Dimuat!");
+
+var pencarianAman = `html:
+<body style="font-family:sans-serif; text-align:center; padding-top:40px; background:#222; color:white;">
+    <h2 style="color:#e06b27;">🦆 Mini Pencarian</h2>
+    <form action="https://duckduckgo.com/" method="GET" target="_blank">
+        <input type="text" name="q" placeholder="Cari di internet..." style="padding:10px; width:80%; border-radius:10px; border:none; outline:none; text-align:center;">
+        <br><br>
+        <button type="submit" style="padding:10px 20px; background:#e06b27; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">Cari Sekarang</button>
+    </form>
+</body>`;
+
+BikinBrowserMelayang("Browser Internal", pencarianAman, 350, 300, 50, 50);</textarea>
+
+    <!-- BAGIAN BAWAH: MESIN i++ (JAVASCRIPT) -->
+    <script>
+        // ==========================================
+        //         SISTEM INTI EDITOR
+        // ==========================================
+        function jalankan() {
+            let code = document.getElementById('editor').value;
+            try { eval(code); } catch(e) { Notif("⚠️ Error: " + e.message); }
+        }
+
+        function saveFile() {
+            let blob = new Blob([document.getElementById('editor').value], {type: "text/plain"});
+            let a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = "proyek-iplusplus.ipp";
+            a.click();
+            Notif("File .ipp berhasil disimpan!");
+        }
+
+        function loadFile(event) {
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                document.getElementById('editor').value = e.target.result;
+                Notif("File .ipp berhasil dimuat!");
+            }
+            reader.readAsText(event.target.files[0]);
+        }
+
+        // ==========================================
+        //         PERINTAH RESMI BAHASA i++
+        // ==========================================
+        
+        // 1. Cetak (Console & Alert)
+        function cetak(msg) { 
+            console.log(msg); 
+            alert(msg); 
+        }
+
+        // 2. Notifikasi Toast (Pop-up keren)
+        function Notif(pesan) {
+            let el = document.createElement('div');
+            el.style.cssText = "position:fixed; bottom:20px; right:20px; background:#f1c40f; color:#000; padding:15px 20px; border-radius:8px; z-index:10001; font-weight:bold; box-shadow:0px 4px 10px rgba(0,0,0,0.5); transition: 0.5s;";
+            el.innerText = pesan;
+            document.body.appendChild(el);
+            setTimeout(() => { el.style.opacity = '0'; setTimeout(()=> el.remove(), 500); }, 3000);
+        }
+
+        // 3. Getar HP
+        function Getar(ms) {
+            if(navigator.vibrate) navigator.vibrate(ms);
+        }
+
+        // 4. Bicara (Text-to-Speech)
+        function Bicara(teks) {
+            let msg = new SpeechSynthesisUtterance(teks);
+            msg.lang = 'id-ID'; 
+            window.speechSynthesis.speak(msg);
+        }
+
+        // 5. Database Lokal (Simpan/Ambil Data)
+        function SimpanData(kunci, nilai) { localStorage.setItem(kunci, nilai); }
+        function AmbilData(kunci) { return localStorage.getItem(kunci); }
+
+        // 6. Jendela Melayang (Support HTML & Web)
+        function BikinBrowserMelayang(judul, konten, lebar, tinggi, x, y) {
+            const win = document.createElement('div');
+            win.style.cssText = `position:absolute; left:${x}px; top:${y}px; width:${lebar}px; height:${tinggi}px; background:#fff; z-index:9999; display:flex; flex-direction:column; border:2px solid #333; box-shadow:0 0 10px rgba(0,0,0,0.5); border-radius:5px; overflow:hidden;`;
+            
+            win.innerHTML = `
+                <div style="background:#333; color:#fff; padding:8px 10px; font-size:12px; display:flex; justify-content:space-between; align-items:center;">
+                    <b>${judul}</b> 
+                    <button onclick="this.parentElement.parentElement.remove()" style="cursor:pointer; background:#e74c3c; color:white; border:none; border-radius:3px; padding:2px 8px; font-weight:bold;">X</button>
+                </div>
+                <iframe style="flex:1; width:100%; border:none; background:#fff;"></iframe>
+            `;
+            
+            document.body.appendChild(win);
+            
+            const iframe = win.querySelector('iframe');
+            if (konten.startsWith('html:')) {
+                iframe.srcdoc = konten.substring(5); // Render Kode HTML buatan sendiri
+            } else {
+                iframe.src = konten; // Render Link Internet (URL)
+            }
+        }
+
+        // 7. Layar Penuh (Untuk Game/Aplikasi)
+        function LayarPenuh(konten) {
+            const layar = document.createElement('div');
+            layar.style.cssText = "position:fixed; top:0; left:0; width:100vw; height:100vh; background:#000; z-index:10000; display:flex; flex-direction:column;";
+            
+            layar.innerHTML = `
+                <div style="background:#222; padding:10px; display:flex; justify-content:space-between; align-items:center;">
+                    <span style="color:#f1c40f; font-weight:bold; font-family:sans-serif;">⚡ Aplikasi Berjalan</span>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background:#e74c3c; color:white; border:none; padding:8px 15px; cursor:pointer; font-weight:bold; border-radius:5px;">Tutup (X)</button>
+                </div>
+                <iframe style="flex:1; width:100%; border:none; background:#fff;"></iframe>
+            `;
+            
+            document.body.appendChild(layar);
+            
+            const iframe = layar.querySelector('iframe');
+            if (konten.startsWith('html:')) {
+                iframe.srcdoc = konten.substring(5);
+            } else {
+                iframe.src = konten;
+            }
+        }
+
+        // 8. Integrasi AI (Gemini)
+        async function TanyaAI(prompt, callback) {
+            const API_KEY = "MASUKKAN_API_KEY_GEMINI_DISINI"; // Ganti dengan kodemu nanti
+            try {
+                let res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${API_KEY}`, {
+                    method: "POST", headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                });
+                let data = await res.json();
+                callback(data.candidates[0].content.parts[0].text);
+            } catch(e) { Notif("⚠️ Error AI: Cek koneksi atau API Key."); }
+        }
+    </script>
+</body>
+  </html>
+  
