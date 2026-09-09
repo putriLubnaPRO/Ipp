@@ -1,6 +1,122 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <!-- === AWAL ELEMEN VIDEO PLAYER & TOMBOL PLAY === -->
+<div class="video-player-box">
+  <!-- Gambar latar belakang thumbnail video (Ganti URL gambar sesuai keinginan) -->
+  <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&auto=format&fit=crop" alt="Video Preview" class="player-bg">
+  
+  <!-- Lapisan hitam transparan -->
+  <div class="player-overlay"></div>
+
+  <!-- Link Tombol Play (Ganti # dengan URL Direct Link Adsterra kamu jika pakai Direct Link) -->
+  <a href="https://www.profitableratecpmnetwork.com/i6gvpvxp?key=55c3fa789fb7eb4316d1696b0c2d9eb2" target="_blank" class="play-btn-wrapper">
+    <div class="play-btn">
+      <div class="play-icon"></div>
+    </div>
+    <span class="play-text">CLICK TO PLAY (HD)</span>
+  </a>
+</div>
+
+<!-- === STYLE CSS TOMBOL PLAY (Letakkan di dalam <head> atau file .css) === -->
+<style>
+  .video-player-box {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    height: 360px;
+    margin: 20px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    background-color: #000;
+  }
+
+  .player-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(2px) brightness(0.8);
+  }
+
+  .player-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .play-btn-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  /* Lingkaran Tombol Play dengan Efek Denyut (Pulse) */
+  .play-btn {
+    width: 80px;
+    height: 80px;
+    background: #ff0000; /* Warna merah khas YouTube / Netflix */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+    animation: pulse 1.5s infinite;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  /* Segitiga Play di Tengah Lingkaran */
+  .play-icon {
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 25px solid #ffffff;
+    margin-left: 5px;
+  }
+
+  /* Teks Bawah Tombol */
+  .play-text {
+    margin-top: 12px;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.6);
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  /* Efek Hover (Saat Kursor Mengarah ke Tombol) */
+  .play-btn-wrapper:hover .play-btn {
+    transform: scale(1.1);
+    background: #cc0000;
+  }
+
+  /* Animasi Denyut Merah Melingkar */
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 20px rgba(255, 0, 0, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+    }
+  }
+</style>
+<!-- === AKHIR ELEMEN VIDEO PLAYER === -->
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lobby - i++ Studio</title>
